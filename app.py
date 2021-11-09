@@ -1,10 +1,10 @@
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)   # __name__ contains relative path to the module
 
 @app.route('/')         # http://www.mysite.com/
 def home():
-    return {'message': 'Hello, world!'}
+    return jsonify({'message': 'Hello, world!'})
 
 
 if __name__ == '__main__':
