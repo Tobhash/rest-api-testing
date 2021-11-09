@@ -1,10 +1,10 @@
-from unittest import TestCase
-from app import app
+from tests.system.test_base import BaseTest
 import json
 
-class TestHome(TestCase):
+class TestHome(BaseTest):
+
     def test_home(self):
-        with app.test_client() as c:
+        with self.test_client() as c:
             resp = c.get('/')
 
             self.assertEqual(resp.status_code, 200)     # 200 - the default status code -> all good
@@ -12,3 +12,4 @@ class TestHome(TestCase):
                 json.loads(resp.get_data()),
                 {'message': 'Hello, world!'}
             )
+
