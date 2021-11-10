@@ -8,6 +8,10 @@ class Item(Resource):
                         type=float,
                         required=True,
                         help="This field cannot be left blank!")
+    parser.add_argument('store.id',
+                        type=int,
+                        required=True,
+                        help="Every item needs a store id.")
 
     def get(self, name):
         item = ItemModel.find_by_name(name)
@@ -50,6 +54,7 @@ class Item(Resource):
         item.save_to_db()
 
         return item.json()
+
 
 class ItemList(Resource):
     def get(self):
