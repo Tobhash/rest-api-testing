@@ -14,6 +14,9 @@ class BaseTest(TestCase):
     @classmethod
     def setUpClass(cls):
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'
+        app.config['DEBUG'] = False
+        app.config['PROPAGATE_EXCEPTIONS'] = True   # when exception occurs its bubbled up through the hierarchy
+                                                    # and is not handle on the way
         with app.app_context():
             db.init_app(app)
 
